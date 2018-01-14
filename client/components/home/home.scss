@@ -1,0 +1,43 @@
+@import '../../buildStyleSheets/index';
+
+.task-done{
+  text-decoration: line-through;
+  color : red;
+}
+
+.li{
+  display: flex;
+}
+
+
+.home-page-carousel {
+  margin-top: 60px;
+}
+
+.download-section {
+
+  margin-top: 60px;
+
+  .download-info-row {
+
+    .info-col {
+        display: inline;
+      .download-text {
+        // font-size: $font-size-notifications;
+      }
+
+    }
+
+    .icon-col {
+
+      .icon-row {
+
+        .app-store-icon {
+
+          width: 100%;
+          height: 65px;
+        }
+      }
+    }
+  }
+}

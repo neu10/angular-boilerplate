@@ -1,0 +1,170 @@
+.container
+  .row
+    //.col.s12.m6.xl6.cf
+      .card
+        .card-content
+          .input-field
+            input.form-control#accName(type='text', name="accName", [(ngModel)] = 'details.name')
+            label(for='accName') Name
+          .input-field
+            input.form-control#amt(type='number', name="amount", [(ngModel)] = 'details.amount')
+            label(for='limit') Amount
+          .input-field
+            input.form-control#duedate(type='text', name="due", [(ngModel)]="details.dueDate",)
+            label(for='duedate') Due on
+          .input-field
+            input.form-control#proprity(type='number', name="proprity", [(ngModel)] = 'details.priority')
+            label(for='proprity') Priority
+          button.form-control.btn-danger(name="addLender", (click)="addLender(details)" ) Add
+    .col.s12.m6.xl6
+      .card
+        .card-content
+          .input-field
+            input.form-control#initialNumber(type='number', name="input-number", [(ngModel)] = 'initialNumber')
+            label(for='initialNumber') Initial amt.
+          .input-field
+            input.form-control#nput-numbers(type='number', name="input-numbers", [(ngModel)] = 'maxV')
+            label(for='nput-numbers') Required amt.
+          .input-field
+            input.form-control#limit(type='number', name="input-numbewr", [(ngModel)] = 'limit')
+            label(for='limit') Days or times
+          .input-field
+            input.form-control#points(type='number', name="points", [(ngModel)]="points", step='.05')
+            label(for='points') Multiplication factor
+          .input-field
+            input.form-control#timeToStart(type='text', name="timeToStart", [(ngModel)]="timeToStart")
+            label(for='points') StartTime
+          .input-field
+            input.form-control#timepoints(type='text', name="timepoints", [(ngModel)]="timeSteps")
+            label(for='points') Time steps
+          button.form-control.btn-danger.margin-left-3x(name="calculate", (click)="calculateOutcomes(initialNumber,points,limit,maxV,timeToStart)" ) Calculate
+    .col.s12.m6.xl6
+      .card
+        .card-content
+          .card-title
+            .row
+              .col.s12.m6
+                h4 Total:
+                  span.materialize-red-text   {{arr.length}}
+              .col.s12.m6
+                h4 Left:
+                  span.materialize-red-text   {{remaining}}
+    .col.s12.m6.xl6
+      .card
+        .card-content
+          .card-title
+          ul(*ngIf='arr && arr.length > 0')
+            li.row(*ngFor='let i of arr;let idx = index')
+              input(type="checkbox", [(ngModel)] ="i.checked", name='{{idx}}', (change)="onChanged(i.checked)", id="{{idx}}")
+              label(for="{{idx}}", [ngClass]="{'task-done': i.checked}")
+                span {{i.value}}
+              span.col.m3 {{getTimeS((idx+1))}}
+    .col.s12.m6.xl6(*ngIf='lenders && lenders.length > 0')
+      .card
+        .card-content
+          ul
+            li(*ngFor='let lender of lenders;let indx = index')
+              .row
+                input.col-md-3(type="checkbox", [(ngModel)] ="lender.checked", name='{{indx}}+lender', (change)="clearedDue(lender.checked)", id="{{indx}}+lender")
+                label.col-md-9(for="{{indx}}+lender", [ngClass]="{'task-done': lender.checked}")
+                  h5.materialize-red-text {{lender.name}}
+                  span.materialize-red-text {{lender.amount}}
+                  h6.pink-text {{lender.dueDate}}
+//.container
+  .center
+    img(alt='profile', src='', style='width:300px;height:auto;border-radius:55%;border: 5px solid white;')
+    //.details
+      a.details-small(href='tel:+918867861672') +91 8867861672
+    .center
+      #hero.buffer-top
+        h3.fadein-fast.white Nutan Garla
+        #social
+          a(href='http://github.com/neu10', target='_blank')
+            span.fa.fa-github-square
+          //a(href='skype:nutan1498?chat')
+            span.icon-skype
+          a(href='http://linkedin.com/in/garlanutan', target='_blank')
+            span.fa.fa-linkedin
+          a(href='mailto:garlanutan@gmail.com')
+            span.fa.fa-envelope
+        p.fadein-fast
+          | Hello, I am a web developer from Bangalore,India. I enjoy building everything from small business sites to rich interactive web apps. If you are a business seeking a web presence or an employer looking to hire, you can get in touch with me
+          b
+            a(href='#contact', myscroll='')  here
+          | .
+        .callToAction
+          a.btn.btn-freelance(href='http://goo.gl/forms/gYi9a11a7U', target='_blank')
+            | Get in touch
+            span.icon-chevron-right
+//section#work.work_bg
+  .container.row
+    h2
+      | This section contains the work
+
+//section#contacta.contact_bg
+  sebm-google-map([latitude]='12.969800', [longitude]='77.749947' ,[zoom]='12',[scrollwheel] = 'false', [disableDefaultUI]='false', [zoomControl]='true')
+    sebm-google-map-marker([latitude]='12.969800', [longitude]='77.749947', [markerDraggable]='false')
+//.container
+  .container.row
+    h2
+      | Keep in TOUCH with me
+    #contact.pull-right
+      form#contact-form(action='mailer.php', method='post', name='contact-form')
+        .buffer-bottom.row
+          .input-group.col-md-4
+            span.fa.fa-user.input-group-addon
+            input#field1.form-control(type='text', name='name', placeholder='My name is.. ', required='')
+          .input-group.col-md-4
+            span.fa.fa-envelope.input-group-addon
+            input.form-control(type='email', name='email', placeholder='Please respond @..', required='')
+          .input-group
+            span.fa.fa-phone.input-group-addon
+            input.form-control(type='text', name='phone', placeholder='Call me on.. ', required='')
+        .buffer-bottom
+          textarea.message(name='message', placeholder='I wanna talk about..', required='', rows='6')
+        span#submit-response
+        .pull-right
+          input.button(type='submit', value='send message')
+
+//.container
+    .row
+      .col-md-12
+        .section_heading.section_heading_2
+          h2  Contact Us
+          h4
+            | Drop us your details and be notified as soon as we launch.
+        .col-md-6
+          .contact_form
+            .alert.alert-success.alert-dismissable(*ngIf='submitted')
+              a.close(href='#', data-dismiss='alert', aria-label='close') ×
+              span Thank you for contacting us.
+            form((ngSubmit)="postMessage(user)", novalidate='')
+              .form-group
+                label Full Name :
+                  span *
+                input.form-control(type='text',[(ngModel)]="user.name", name='name', required='true')
+              .form-group
+                label Email Address :
+                  span *
+                input.form-control(type='email',[(ngModel)]="user.email", name='email', required='true')
+              .form-group
+                label Message
+                  span *
+                textarea.form-textarea([(ngModel)]="user.message",name='msg',rows='3', required='true')
+              .section_sub_btn
+                button.btn.btn-default(type='submit') Send Message
+        .col-md-6
+          .contact_text
+            ul
+              li
+                span
+                  i.fa.fa-home(aria-hidden='true')
+                h5 Kabul, Afganistan
+              li
+                span
+                  i.fa.fa-envelope-o(aria-hidden='true')
+                h5 khwand9@gmail.com
+              li
+                span
+                  i.fa.fa-phone(aria-hidden='true')
+                h5 +93784282727

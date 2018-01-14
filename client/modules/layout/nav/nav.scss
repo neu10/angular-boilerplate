@@ -1,0 +1,36 @@
+@import '../../../buildStyleSheets/index';
+.nav-bar {
+  background-color: palette(white);
+  box-shadow: none;
+  
+
+  .nav-content {
+
+    .tabs {
+
+      .nav-items {
+
+        a {
+          color: palette(gray, darkest);
+          font-size: $font-size-small;
+          font-weight: 500;
+
+          &:hover {
+            color: palette(black);
+          }
+        }
+
+        
+        
+        .active {
+          color: palette(relief, red);
+          font-weight: 700;
+          border-bottom: 5px solid palette(relief, red);
+        }
+      }   
+    }
+  }
+}
+.side-nav li>a{
+  border-bottom: 1px solid rgba(221, 221, 221, 0.4);  // Client's requirement for having lines in the side nav mobile.
+}

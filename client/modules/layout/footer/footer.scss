@@ -1,0 +1,64 @@
+@import '../../../buildStyleSheets/index';
+
+.footer {
+  background-color: palette(gray, base);
+  padding: spacing(30);
+
+  .footer-logo {
+    height: 100px;
+    width: 80%;
+
+    @media(max-width: 467px) {
+      width: 100%;
+    }
+  }
+
+  .quick-link-header {
+    font-weight: 700;
+    margin-bottom: spacing(15);
+  }
+  .nav-links {
+
+    .link-name {
+      color: palette(black);
+    }
+  }
+
+  .social-images-row {
+
+    @media(max-width: 467px) {
+      display: flex;
+    }
+
+    .image-holder {
+
+      padding: spacing(10);
+
+      @media(max-width: 467px) {
+        padding: spacing(5);
+      }
+
+      .social-image {
+        width: 60px;
+        cursor: pointer;
+        @media(max-width: 467px) {
+          width: 40px;
+        }
+      }
+    }
+  }
+
+  .footer-info-row {
+    border-top: 1px solid palette(gray, dark);
+    font-size: $font-size-smaller;
+    font-weight: 700;
+    
+    .copy-right-text {
+      text-align: right;
+
+      @media(max-width: 467px) {
+        text-align: left;
+      }
+    }
+  }
+}
